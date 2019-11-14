@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Console Tricks</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <p onclick="makeGreen()">xBreakxDownx</p>
+    <script>
+        const dogs = [
+            { name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }
+        ];
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = '#BADA55';
+            p.style.fontSize = '50px';
+        }
+
+        // warning 
+        console.warn('Careful you are in danger!');
+
+        // error
+        console.error('You did something wrong');
+
+        // info
+        console.info('JavaScript is very important, do study it');
+        // testing 
+        console.assert(1 === 1, 'You did not select the correct element');
+        // viewing dom elements
+        console.log('p');
+        console.dir('p');
+        // grouping together
+        dogs.forEach(dog => {
+            console.group(`${dog.name}`);
+            console.log(`${dog.name} is ${dog.age} years old`);
+            console.log(`This is ${dog.name} is ${dog.age * 7} dog years old`);
+            console.groupEnd(`${dog.name}`);
+        });
+        // timing
+        console.time('fetching data');
+        fetch('https://api.github.com/users/wesbos')
+            .then(data => data.json())
+            .then(data => {
+                console.timeEnd('fetching data');
+                console.log(data);
+            });
+    </script>
+</body>
+
+</html>
